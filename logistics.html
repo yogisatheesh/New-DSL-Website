@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DSL Solutions</title>
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="stylesheet" href="styles.css">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<style>
+html { scroll-behavior: smooth; }
+body {
+    font-family: Montserrat, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+/* ========= NAVBAR ========= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  background-color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.navbar ul li {
+  margin: 0 12px;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #0B3E21;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* ========= RESPONSIVE ========= */
+@media (max-width: 992px) {
+  .navbar ul li {
+    margin: 0 8px;
+  }
+  .navbar ul li a {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .navbar ul li {
+    margin: 10px 0;
+  }
+
+  .navbar ul li a {
+    font-size: 14px;
+  }
+}
+
+/* ========= SECTION SPACING ========= */
+section {
+  padding: 40px 15px;
+}
+
+h2 {
+  font-size: 1.6rem;
+}
+
+p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* ========= AUTOMOTIVES CARDS ========= */
+.automotive-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.automotive-card {
+  width: 45%;
+  height: auto;
+  padding: 12px;
+  font-size: 14px;
+}
+
+@media (max-width: 480px) {
+  .automotive-card {
+    width: 100%;
+  }
+  h2 {
+    font-size: 1.3rem;
+  }
+}
+
+
+/* Logo */
+.logo img {
+    max-width: 150px;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+.logo img:hover { transform: scale(1.2); }
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    background-color: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.navbar ul {
+    list-style: none;
+    padding: 0 30px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+.navbar ul li {
+    margin: 0 25px;
+    position: relative;
+    transition: transform 0.3s;
+}
+.navbar ul li:hover { transform: scale(1.1); }
+.navbar ul li a {
+    text-decoration: none;
+    color: #0B3E21;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+.navbar ul li a:hover { color: #FECD0A; }
+
+
+/* Banner */
+.banner {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.banner-container {
+    display: flex;
+    width: 200%;
+    animation: scrollBanner 20s linear infinite;
+}
+.banner-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-shrink: 0;
+    justify-content: space-around;
+    padding: 20px;
+}
+.banner-item img {
+    width: 50%;
+    height: auto;
+    transition: transform 0.5s ease;
+}
+.banner-item img:hover { transform: scale(1.05); }
+.banner-item .text-content {
+    width: 40%;
+    font-size: 20px;
+    color: #0B3E21;
+    font-weight: bold;
+}
+@media (max-width:768px) {
+    .banner-item { flex-direction: column; text-align: center; }
+    .banner-item img { width: 90%; }
+    .banner-item .text-content { width: 90%; font-size: 16px; }
+}
+@keyframes scrollBanner { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+
+/* Sections */
+section { padding: 80px 20px; text-align: center; }
+section h2 { font-size: 36px; color: #0B3E21; margin-bottom: 20px; }
+section p { font-size: 18px; max-width: 800px; margin: 0 auto; color: #444; }
+
+/* Expertise Cards */
+.expertise-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    width: 300px;
+    text-align: center;
+    transition: background-color 0.4s ease, transform 0.3s ease;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.expertise-card:hover {
+    background-color: #fff8e6;
+    transform: translateY(-5px);
+}
+.expertise-card img { width: 300px; height: auto; object-fit: contain; margin-bottom: 1rem; }
+
+.toggle-form-btn {
+    background: #ffc107;
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: transform 0.3s ease;
+}
+.toggle-form-btn:hover { transform: rotate(90deg); }
+.hidden-form {
+    display: none;
+    margin-top: 1rem;
+    text-align: left;
+}
+.hidden-form input,
+.hidden-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+.hidden-form button[type="submit"] {
+    background: #036f54;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Card container */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+.card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 35px;
+    width: 100px;
+    transition: transform 0.3s;
+}
+.card:hover { transform: translateY(-10px); }
+.card img { width: 80px; height:auto; border-radius: 10px; margin-bottom: 15px; }
+
+/* Footer Map */
+.map-section {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 350px;
+    margin: 0 auto;
+    background: url('assets/footermap.png') no-repeat center center;
+    background-size: contain;
+}
+.map-section h2 { font-size: 36px; margin-bottom: 10px; color: #FECD0A; }
+
+.map-marker {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    z-index: 2;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+}
+.map-marker::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #000;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 5px;
+    white-space: nowrap;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+.map-marker:hover::after { opacity: 1; }
+
+.food { background-color: #FECD0A; box-shadow: 0 0 10px #FECD0A; }
+.petro { background-color: #036f54; box-shadow: 0 0 10px #036f54; }
+
+/* Map Legend */
+.map-legend {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    text-align: left;
+    background: rgba(255,255,255,0.8);
+    padding: 10px 15px;
+    border-radius: 8px;
+    color: #000;
+    font-size: 16px;
+    z-index: 3;
+}
+.map-legend span {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.legend-dot {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+.legend-food { background-color: #FECD0A; }
+.legend-petro { background-color: #036f54; }
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px 15px;
+    background: #0B3E21;
+    color: #FECD0A;
+    font-family: Montserrat, sans-serif;
+}
+
+/* WhatsApp Floating Button */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: pulse 2s infinite;
+}
+.whatsapp-float img { width: 40px; height: 40px; }
+
+/* Pulse Animation */
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.8; }
+}
+.map-section {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 350px; /* fixed height helps alignment */
+    margin: 0 auto;
+    background: url('assets/footermap.png') no-repeat center center;
+    background-size: contain; /* ensures whole map fits */
+}
+
+.map-section h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: #FECD0A;
+}
+
+.map-overlay-content {
+    background: rgba(0,0,0,0.5);
+    padding: 30px;
+    border-radius: 15px;
+    display: inline-block;
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+.map-overlay-content p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* Markers */
+.map-marker {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    z-index: 2;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+}
+
+.map-marker::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #000;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 5px;
+    white-space: nowrap;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.map-marker:hover::after {
+    opacity: 1;
+}
+
+/* Marker Colors */
+.food { background-color: #FECD0A; box-shadow: 0 0 10px #FECD0A; }
+.petro { background-color: #036f54; box-shadow: 0 0 10px #036f54; }
+
+/* Marker Positions (tweak as needed) */
+.malaysia { top: 62%; left: 72%; }
+.singapore { top: 66%; left: 73%; }
+.australia { top: 83%; left: 75%; }
+.china { top: 46%; left: 69%; }
+.bangladesh { top: 56%; left: 63%; }
+.india { top: 61%; left: 59%; }
+.philipines { top: 61%; left: 76%; }
+
+/* Map Legend */
+.map-legend {
+    position: absolute;
+    bottom: 20px;   /* near bottom */
+    left: 20px;     /* align left */
+    text-align: left;
+    background: rgba(255,255,255,0.8);
+    padding: 10px 15px;
+    border-radius: 8px;
+    color: #000;    /* black text */
+    font-size: 16px;
+    z-index: 3;
+}
+
+.map-legend span {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.legend-dot {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.legend-food { background-color: #FECD0A; }
+.legend-petro { background-color: #036f54; }
+
+</style>
+</head>
+<body>
+
+<!-- WhatsApp -->
+<a href="https://wa.me/yourwhatsappphonenumber" class="whatsapp-float" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Chat">
+</a>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="logo" data-aos="fade-down">
+        <img src="assets/DSL logo_Final-01.png" alt="DSL Solutions Logo">
+    </div>
+    <ul>
+        <li data-aos="fade-down" data-aos-delay="100"><a href="index.html">Home</a></li>
+        <li data-aos="fade-down" data-aos-delay="200"><a href="index.html#about">About Us</a></li>
+        <li data-aos="fade-down" data-aos-delay="300"><a href="index.html#partners">Our Partners</a></li>
+        <li data-aos="fade-down" data-aos-delay="400"><a href="software.html">IT Services</a></li>
+    </ul>
+</nav>
+<section class="loop-banner">
+    <div class="content-wrapper">
+        <div class="set active">
+            <div class="left-svg">
+                <img src="assets/banner-slider1.svg" alt="Visual 1">
+            </div>
+            <div class="right-text">
+                <h1>Logistics & Distribution</h1>
+                <p>We offer services & solutions to ensure a robust, resilient & efficient supply chain operations. We could be your consultant or your feet on the ground.</p>
+            </div>
+        </div>
+        <div class="set">
+            <div class="left-svg">
+                <img src="assets/banner-slider1.svg" alt="Visual 2">
+            </div>
+            <div class="right-text">
+                <h1>Transform</h1>
+                <p>We help brands evolve digitally for the modern world.</p>
+            </div>
+        </div>
+        <div class="set">
+            <div class="left-svg">
+                <img src="assets/banner-slider1.svg" alt="Visual 3">
+            </div>
+            <div class="right-text">
+                <h1>Accelerate</h1>
+                <p>We fuel growth with data-driven design strategies.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="Our Services" data-aos="fade-up">
+    <h2>Our Services</h2>
+    <div class="card-container">
+        <div class="card" data-aos="zoom-in"><img src="assets/import.png"><p>Import & Export</p></div>
+        <div class="card" data-aos="zoom-in"><img src="assets/import2.png"><p>Logistics Functions Outsourcing</p></div>
+        <div class="card" data-aos="zoom-in"><img src="assets/diverse.png"><p>Diverse Moving Solutions</p></div>
+        <div class="card" data-aos="zoom-in"><img src="assets/fleet.png"><p>Fleet Management Solutions</p></div>
+        <div class="card" data-aos="zoom-in"><img src="assets/internation.png"><p>International Product Sourcing & Distribution</p></div>
+        <div class="card" data-aos="zoom-in"><img src="assets/digital-pg-ic6.png"><p>Warehouse Solutions</p></div>
+    </div>
+</section>
+<!-- ===== Add this below Our Services Section ===== -->
+<!-- ===== Automotives Section ===== -->
+<!-- ===== Automotives Section ===== -->
+<section id="Automotives" data-aos="fade-up" style="padding:60px 20px; background:#f9f9f9; text-align:center;">
+  <h2 style="color:#0B3E21; margin-bottom:40px;">Automotives</h2>
+  <div class="automotive-container">
+    <div class="automotive-card" data-title="COMPRESSORS"><p>COMPRESSORS</p></div>
+    <div class="automotive-card" data-title="CONVEYORS & OVEN CHAINS"><p>CONVEYORS & OVEN CHAINS</p></div>
+    <div class="automotive-card" data-title="DRY ANTI-FRICTION COATING"><p>DRY ANTI-FRICTION COATING</p></div>
+    <div class="automotive-card" data-title="FOOD-GRADE"><p>FOOD-GRADE</p></div>
+    <div class="automotive-card" data-title="GEARS & BEARINGS"><p>GEARS & BEARINGS</p></div>
+    <div class="automotive-card" data-title="GREASES & COMPOUNDS"><p>GREASES & COMPOUNDS</p></div>
+    <div class="automotive-card" data-title="HYDRAULICS"><p>HYDRAULICS</p></div>
+    <div class="automotive-card" data-title="MARINE"><p>MARINE</p></div>
+    <div class="automotive-card" data-title="METAL WORKING AND PRESERVATIVE FLUIDS"><p>METAL WORKING AND PRESERVATIVE FLUIDS</p></div>
+    <div class="automotive-card" data-title="THERMAL HEAT TRANSFERS"><p>THERMAL HEAT TRANSFERS</p></div>
+    <div class="automotive-card" data-title="TURBINE & VACUUM TUBES"><p>TURBINE & VACUUM TUBES</p></div>
+    <div class="automotive-card" data-title="WIRES & ROPES"><p>WIRES & ROPES</p></div>
+  </div>
+</section>
+
+<!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+.automotive-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.automotive-card {
+  width: 220px;
+  height: 140px; /* taller to fit icon */
+  background: #ffffff;
+  border: 2px solid #0B3E21;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.automotive-card i {
+  font-size: 32px;
+  color: #0B3E21;
+  margin-bottom: 10px;
+  transition: color 0.3s;
+}
+
+.automotive-card p {
+  font-size: 16px;
+  font-weight: bold;
+  color: #0B3E21;
+  margin: 0;
+}
+
+.automotive-card:hover {
+  background: #0B3E21;
+  transform: translateY(-8px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.automotive-card:hover p,
+.automotive-card:hover i {
+  color: #FECD0A;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .automotive-card {
+    width: 45%;
+    height: 120px;
+  }
+  .automotive-card p {
+    font-size: 14px;
+  }
+}
+@media (max-width: 480px) {
+  .automotive-card {
+    width: 100%;
+  }
+}
+</style>
+
+<script>
+// Icon mapping for each card
+const iconMap = {
+  "COMPRESSORS": "fa-solid fa-wind",
+  "CONVEYORS & OVEN CHAINS": "fa-solid fa-gears",
+  "DRY ANTI-FRICTION COATING": "fa-solid fa-brush",
+  "FOOD-GRADE": "fa-solid fa-utensils",
+  "GEARS & BEARINGS": "fa-solid fa-cog",
+  "GREASES & COMPOUNDS": "fa-solid fa-oil-can",
+  "HYDRAULICS": "fa-solid fa-droplet",
+  "MARINE": "fa-solid fa-ship",
+  "METAL WORKING AND PRESERVATIVE FLUIDS": "fa-solid fa-industry",
+  "THERMAL HEAT TRANSFERS": "fa-solid fa-fire",
+  "TURBINE & VACUUM TUBES": "fa-solid fa-fan",
+  "WIRES & ROPES": "fa-solid fa-plug"
+};
+
+// Inject icons dynamically
+document.querySelectorAll(".automotive-card").forEach(card => {
+  const title = card.getAttribute("data-title");
+  if (iconMap[title]) {
+    const icon = document.createElement("i");
+    icon.className = iconMap[title];
+    card.prepend(icon);
+  }
+});
+</script>
+
+
+<!-- ===== Automotive Modal ===== -->
+<div id="automotiveModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.7); z-index:10000; justify-content:center; align-items:center; opacity:0; transition: opacity 0.3s;">
+  <div style="background:#fff; border-radius:15px; max-width:600px; width:90%; padding:30px; position:relative; transform: translateY(50px); transition: transform 0.3s;">
+    <span id="modalClose" style="position:absolute; top:15px; right:20px; font-size:25px; font-weight:bold; cursor:pointer;">&times;</span>
+    <h2 id="modalTitle" style="color:#0B3E21; margin-bottom:15px;"></h2>
+    <p id="modalDescription" style="font-size:1rem; color:#333;"></p>
+
+    <div class="gallery-container" style="display:flex; justify-content:center; align-items:center; gap:10px; margin-top:20px;">
+      <button id="prevImg" style="padding:8px 14px; cursor:pointer; background:#0B3E21; color:#fff; border:none; border-radius:5px;">&#10094;</button>
+      <img id="modalImg" src="" alt="" style="width:80%; max-height:300px; object-fit:contain; border-radius:10px;">
+      <button id="nextImg" style="padding:8px 14px; cursor:pointer; background:#0B3E21; color:#fff; border:none; border-radius:5px;">&#10095;</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const modal = document.getElementById('automotiveModal');
+const modalBox = modal.querySelector('div');
+const modalClose = document.getElementById('modalClose');
+const modalTitle = document.getElementById('modalTitle');
+const modalDescription = document.getElementById('modalDescription');
+const modalImg = document.getElementById('modalImg');
+const prevImg = document.getElementById('prevImg');
+const nextImg = document.getElementById('nextImg');
+
+let currentImgIndex = 0;
+let currentImages = [];
+
+// All automotive details with image gallery
+const automotiveDetails = {
+  "COMPRESSORS": {
+    title: "COMPRESSORS",
+    description: "Air, Hydrocarbon Gas, Refrigeration & Chiller",
+    images: ["assets/compres1.jpg","assets/compres2.jpg","assets/compres3.jpg","assets/compres4.jpg","assets/compres5.jpg","assets/compres6.jpg"]
+  },
+  "CONVEYORS & OVEN CHAINS": {
+    title: "CONVEYORS & OVEN CHAINS",
+    description: "High-quality conveyors and oven chains for smooth industrial operations.",
+    images: ["assets/convoy1.jpg"]
+  },
+  "DRY ANTI-FRICTION COATING": {
+    title: "DRY ANTI-FRICTION COATING",
+    description: "Specialized coating solutions for reduced friction and wear.",
+    images: ["assets/dry1.jpg"]
+  },
+  "FOOD-GRADE": {
+    title: "FOOD-GRADE",
+    description: "H1 Certified-Halal & Kosher compliant food-grade lubricants.",
+    images: ["assets/food1.jpg"]
+  },
+  "GEARS & BEARINGS": {
+    title: "GEARS & BEARINGS",
+    description: "Durable gears and bearings for various automotive applications.",
+    images: ["assets/gears.jpg","assets/gears2.jpg"]
+  },
+  "GREASES & COMPOUNDS": {
+    title: "GREASES & COMPOUNDS",
+    description: "Speciality greases and compounds for exposed gears & pinions.",
+    images: ["assets/lubricant1.jpg","assets/greases1.jpg","assets/greases2.jpg","assets/greases3.jpg","assets/greases4.jpg","assets/greases5.jpg"]
+  },
+  "HYDRAULICS": {
+    title: "HYDRAULICS",
+    description: "Advanced hydraulic solutions for automotive and industrial machinery.",
+    images: ["assets/hydraulic1.jpg","assets/hydraulic2.jpg","assets/hydraulic3.jpg"]
+  },
+  "MARINE": {
+    title: "MARINE",
+    description: "Marine-grade lubricants and coatings for ship engines and equipment.",
+    images: ["assets/marine1.jpg"]
+  },
+  "METAL WORKING AND PRESERVATIVE FLUIDS": {
+    title: "METAL WORKING AND PRESERVATIVE FLUIDS",
+    description: "Specialized fluids for metalworking, preservation, and anti-corrosion.",
+    images: ["assets/metal1.jpg","assets/metal2.jpg","assets/metal3.jpg","assets/metal4.jpg"]
+  },
+  "THERMAL HEAT TRANSFERS": {
+    title: "THERMAL HEAT TRANSFERS",
+    description: "Efficient thermal heat transfer fluids for industrial and automotive applications.",
+    images: ["assets/thermal1.jpg"]
+  },
+  "TURBINE & VACUUM TUBES": {
+    title: "TURBINE & VACUUM TUBES",
+    description: "High-performance fluids and coatings for turbines and vacuum tube systems.",
+    images: ["assets/turbine1.jpg"]
+  },
+  "WIRES & ROPES": {
+    title: "WIRES & ROPES",
+    description: "Lubricants and protective coatings for industrial wires and ropes.",
+    images: ["assets/wires1.jpg"]
+  }
+};
+
+// Open modal on card click
+document.querySelectorAll('#Automotives .automotive-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const key = card.getAttribute('data-title');
+    const data = automotiveDetails[key];
+    currentImages = data.images || [];
+    currentImgIndex = 0;
+
+    modalTitle.innerText = data.title;
+    modalDescription.innerText = data.description;
+    modalImg.src = currentImages[currentImgIndex];
+
+    modal.style.display = 'flex';
+    setTimeout(() => {
+      modal.style.opacity = '1';
+      modalBox.style.transform = 'translateY(0)';
+    }, 10);
+  });
+});
+
+// Gallery navigation
+prevImg.addEventListener('click', () => {
+  currentImgIndex = (currentImgIndex - 1 + currentImages.length) % currentImages.length;
+  modalImg.src = currentImages[currentImgIndex];
+});
+nextImg.addEventListener('click', () => {
+  currentImgIndex = (currentImgIndex + 1) % currentImages.length;
+  modalImg.src = currentImages[currentImgIndex];
+});
+
+// Close modal
+modalClose.addEventListener('click', () => {
+  modal.style.opacity = '0';
+  modalBox.style.transform = 'translateY(50px)';
+  setTimeout(() => { modal.style.display = 'none'; }, 300);
+});
+
+window.addEventListener('click', (e) => {
+  if(e.target === modal) {
+    modal.style.opacity = '0';
+    modalBox.style.transform = 'translateY(50px)';
+    setTimeout(() => { modal.style.display = 'none'; }, 300);
+  }
+});
+</script>
+
+
+<section class="map-section" data-aos="fade-up">
+    <h2>Global Reach for Industry Solutions</h2>
+    <!-- Food Manufacturing -->
+    <div class="map-marker food malaysia" data-tooltip="Malaysia - Food Manufacturing"></div>
+    <div class="map-marker food singapore" data-tooltip="Singapore - Food Manufacturing"></div>
+    <div class="map-marker food australia" data-tooltip="Australia - Food Manufacturing"></div>
+
+    <!-- Petro Chemicals -->
+    <div class="map-marker petro china" data-tooltip="China - Petro Chemicals"></div>
+    <div class="map-marker petro bangladesh" data-tooltip="Bangladesh - Petro Chemicals"></div>
+    <div class="map-marker petro india" data-tooltip="India - Petro Chemicals"></div>
+    <div class="map-marker petro malaysia" data-tooltip="Malaysia - Petro Chemicals"></div>
+    <div class="map-marker petro philipines" data-tooltip="Philippines - Petro Chemicals"></div>
+
+    <div class="map-legend">
+        <span><span class="legend-dot legend-food"></span> Food Manufacturing</span>
+        <span><span class="legend-dot legend-petro"></span> Petro Automotive Chemicals</span>
+    </div>
+</section>
+
+<footer style="background: #0B3E21; color: #FECD0A; padding: 10px 15px; font-family: Montserrat, sans-serif;">
+    <div class="footer-container" style="position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;">
+        
+        <!-- Left: Contact Info -->
+        <div class="footer-section" style="margin-bottom: 8px; text-align: left;">
+            <h4 style="margin: 0 0 4px 0;">Contact Us</h4>
+            <p style="margin: 0; line-height: 1.4;">
+                16A, Jalan PUJ 1/18, Taman Puncak Jalil,<br>
+                43300 Seri Kembangan, Selangor, Malaysia.
+            </p>
+            <p style="margin: 4px 0 0 0;">
+                Email: <a href="mailto:enquiry@dahsampailah.com" style="color: #FECD0A; text-decoration: none;">enquiry@dahsampailah.com</a>
+            </p>
+        </div>
+
+        <!-- Right: Copyright -->
+        <div style="margin-top: 8px; font-size: 0.9rem; padding-top: 0; text-align: right;">
+            &copy; <span id="year"></span> DSL Solutions. All Rights Reserved.
+        </div>
+
+    </div>
+</footer>
+
+<script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+    document.getElementById("year").textContent = new Date().getFullYear();
+    function getQuote() {
+        document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+    }
+</script>
+</body>
+</html>

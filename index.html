@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSL Solutions</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #fff8e6;
+      --secondary: #ffc107;
+      --optional: #036f54;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+    body { background-color: var(--primary); color: #222; scroll-behavior: smooth; line-height: 1.4; overflow-x: hidden; }
+
+    /* -------------------- HERO -------------------- */
+   .hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  color: #fff;
+  background: url("assets/technological-futuristic-holograms-logistics-means-transport.jpg") center center / cover no-repeat fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 5rem 2rem;
+}
+
+.overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(101, 67, 33, 0.15); /* subtle brown tint */
+  z-index: 1;
+}
+
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      max-width: 1200px;
+      margin: 50px auto 0 auto;
+      gap: 2rem;
+      width: 100%;
+    }
+
+    .hero-container {
+  display: flex;
+  flex-direction: column; /* one container up-down layout */
+  gap: 2rem;
+  padding: 2rem;
+  background-color: #0B3E21; /* dark green hero background */
+  border-radius: 10px;
+  max-width: 900px;
+  margin: 2rem auto;
+}
+
+.hero-left {
+  text-align: center;
+  position: relative;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1); /* subtle tint for left */
+  border-radius: 10px;
+}
+
+.hero-left h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #FECD0A; /* highlight color */
+  text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.hero-left h1 .highlight {
+  background-color: rgba(255,255,0,0.3); /* subtle highlight behind text */
+  padding: 0 5px;
+  border-radius: 3px;
+}
+
+.hero-left p.reg {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.hero-right {
+  text-align: left;
+  position: relative;
+  background: rgba(0,0,0,0.4); /* subtle tinted background */
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.hero-right p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #fff;
+  margin: 0;
+}
+
+    /* -------------------- TOP BAR -------------------- */
+    /* -------------------- TOP BAR -------------------- */
+.top-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  z-index: 3;
+
+  /* NEW background with 50% opacity */
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(3px); /* optional: nice frosted effect */
+}
+
+.top-bar img {
+  width: 200px;
+  height: auto;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+nav ul li a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #0B3E21; /* dark green text for contrast */
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+
+nav ul li a:hover {
+  color: #FECD0A;
+  text-shadow: 0 0 10px #FECD0A, 0 0 20px #FECD0A, 0 0 30px #FECD0A;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #0B3E21;
+}
+
+/* -------------------- EXPLORE BUTTON -------------------- */
+.explore-container {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Shared button styles */
+.explore-btn, 
+.sub-buttons button {
+  font-weight: 700;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: all 0.35s ease;
+  position: relative;
+  z-index: 2;
+
+  /* Same size for all buttons */
+  width: 220px;
+  height: 55px;
+  padding: 0;
+
+  /* Rounded rectangle */
+  border-radius: 12px;
+
+  background: linear-gradient(135deg, #ffc107, #ffc107);
+  color: #048c68;
+  box-shadow: 0 3px 6px rgba(3,111,84,0.25);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hover effect */
+.explore-btn:hover,
+.sub-buttons button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 6px #ffc107, 0 0 12px #036f54;
+}
+
+/* Sub-buttons hidden by default */
+.sub-buttons {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  gap: 1rem;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease;
+}
+
+/* Show class */
+.sub-buttons.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sub-buttons.show button:first-child {
+  transform: translateX(-96%);
+}
+.sub-buttons.show button:last-child {
+  transform: translateX(96%);
+}
+
+/* ===== ABOUT US ===== */
+.about-section {
+  background: #fff;
+  padding: 5rem 2rem;
+  position: relative;
+}
+.about-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(3,111,84,0.05), rgba(255,193,7,0.05));
+}
+.about-inner {
+  max-width: 1200px; margin: 0 auto; position: relative; z-index: 1;
+}
+.about-row {
+  display: flex; align-items: flex-start; gap: 3rem;
+}
+.about-left {
+  flex: 1;
+}
+.about-left .eyebrow {
+  font-weight: 1000;
+  color: #036f54;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+.about-left h2 {
+  font-size: 2.2rem; font-weight: 700;
+  color: #036f54;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.about-left .lead {
+  font-size: 1.1rem; line-height: 1.6;
+  color: #333;
+}
+.about-right {
+  flex: 1;
+}
+.timeline {
+  display: flex; flex-direction: column; gap: 1.5rem;
+}
+.tile {
+  display: flex; align-items: flex-start; gap: 1rem;
+  opacity: 0; transform: translateY(30px); transition: all 0.6s ease;
+}
+.tile.visible {
+  opacity: 1; transform: translateY(0);
+}
+.tile .badge {
+  flex-shrink: 0;
+  background: #ffc107;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.5rem;
+  padding: 1rem;
+  border-radius: 50%;
+  width: 60px; height: 60px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 15px rgba(3,111,84,0.4);
+}
+.tile .meta h3 {
+  margin: 0 0 0.3rem 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color:#ffc107;
+}
+.tile .meta p {
+  margin: 0; color: #444; line-height: 1.5;
+}
+
+/* ===== OUR PARTNERS ===== */
+/* ===== OUR PARTNERS ===== */
+.partners-section {
+  background: #fff;
+  padding: 1rem 1rem;
+  position: relative;
+}
+
+.partners-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.partners-inner h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+  color: #036f54;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+.partners-row {
+  display: flex;
+  justify-content: center; /* center all cards horizontally */
+  gap: 2.5rem;
+  flex-wrap: wrap; /* responsive */
+  margin-bottom: 2.5rem;
+}
+
+/* Callout container center alignment */
+.partners-callout-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+}
+
+/* Keep existing stat-card animations & count-up JS unchanged */
+
+/* Centered Grid */
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+  gap: 2.5rem;
+  justify-items: center;
+}
+
+/* First row: 3 cards centered */
+.stat-card:nth-child(1) { grid-column: 2; }
+.stat-card:nth-child(2) { grid-column: 3; }
+.stat-card:nth-child(3) { grid-column: 4; }
+
+/* Remaining cards automatically fill next rows */
+.stat-card:nth-child(n+4) {
+  grid-column: auto;
+}
+
+/* Partner Cards */
+/* Partner Cards with better all-side shadow */
+.stat-card {
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  max-width: 260px;
+  width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  /* Improved shadow: soft, evenly around */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1), 
+              0 8px 16px rgba(0,0,0,0.08), 
+              0 12px 24px rgba(0,0,0,0.06);
+}
+
+/* Hover Effect: slightly stronger shadow */
+.stat-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15), 
+              0 12px 24px rgba(0,0,0,0.12), 
+              0 16px 32px rgba(0,0,0,0.1);
+}
+/* Numbers + Titles */
+.stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffc107;
+  margin-bottom: 0.4rem;
+}
+
+.stat-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #036f54;
+  margin-bottom: 0.3rem;
+}
+
+.stat-desc {
+  font-size: 0.95rem;
+  color: #444;
+}
+
+/* Callout Box */
+.partners-callout {
+  grid-column: 1 / -1;  /* spans all columns */
+  background: #036f54;
+  color: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  font-weight: 600;
+  box-shadow: 0 6px 20px rgba(3,111,84,0.3);
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 0.8s forwards 1.4s;
+}
+
+.partners-callout small {
+  display: block;
+  margin-top: 0.8rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+  .about-row { flex-direction: column; }
+  .about-right { margin-top: 2rem; }
+}
+
+    /* -------------------- MOBILE -------------------- */
+    @media (max-width: 1024px) {
+      .hero-content { flex-direction: column; text-align: center; gap: 2rem; margin-top: 80px; }
+      .hero-left, .hero-right { text-align: center; }
+    }
+
+    @media (max-width: 768px) {
+      nav ul { flex-direction: column; position: absolute; top: 80px; right: 0; background: var(--primary); width: 220px; padding: 1rem; display: none; box-shadow: 0 5px 20px rgba(0,0,0,0.2); }
+      nav ul.active { display: flex; }
+      .menu-toggle { display: block; }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <div class="top-bar">
+    <img src="assets/DSL logo_Final-01.png" alt="DSL Logo">
+    <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+    <nav>
+      <ul id="menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#partners">Our Partners</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <!-- Left Column -->
+      <div class="hero-left">
+        <h1>DSL Solutions & Services Sdn Bhd</h1>
+        <p class="reg">202301002713</p>
+      </div>
+      <!-- Right Column -->
+      <div class="hero-right">
+        <p>
+          We provide services for our partner <strong>Sumber Petroleum Cemerlang</strong>, a 40-year-old Malaysian petrochemical lubricant manufacturer & distributor and <strong>OEM manufacturer of over 11 major brands and 100+ product lines.  </strong>
+          <br><br>
+          Contact us for supply, manufacturing, packaging, and distribution of high-quality petrochemical lubricants for various specialized industrial sectors.  
+          R&D with laboratory services available.  
+          <br><br>
+          <strong>House-Brands:</strong> LubriCus, Fenic Power, MyOil, HalalLube (Food-grade, H1 – Halal & Kosher certified), etc.
+        </p>
+      </div>
+    </div>
+
+    <!-- EXPLORE BUTTON -->
+    <div class="explore-container">
+      <button class="explore-btn">Explore Our Services</button>
+      <div class="sub-buttons">
+        <button onclick="location.href='logistics.html'">Lubricants & Supply Chain</button>
+        <button onclick="location.href='software.html'">IT Services</button>
+      </div>
+    </div>
+  </section>
+<script>
+const exploreBtn = document.querySelector(".explore-btn");
+const subButtons = document.querySelector(".sub-buttons");
+let shown = false;
+
+exploreBtn.addEventListener("mouseenter", () => {
+  if (!shown) {
+    subButtons.classList.add("show");
+    shown = true; // Once visible, never hide
+  }
+});
+</script>
+
+<!-- ===== ABOUT US ===== -->
+
+<section id="about" class="about-section" aria-labelledby="aboutHeading">
+  <div class="about-overlay" aria-hidden="true"></div>
+
+  <div class="container about-inner">
+    <div class="about-row">
+      <div class="about-left">
+        <div class="eyebrow">ABOUT US</div>
+        <h2 id="aboutHeading">DSL Solutions &amp; Services Sdn Bhd</h2>
+        <p class="lead">
+          We work to enhance supply chain efficiency, value, and foster long-term, successful partnerships.
+          Leveraging technology and international distribution networks, we help businesses scale cost-effectively while you focus on your core.
+        </p>
+      </div>
+
+      <div class="about-right">
+        <div class="timeline" id="timeline">
+          <div class="tile delay-1">
+            <div class="badge">We</div>
+            <div class="meta">
+              <h3>We — Partnership Focus</h3>
+              <p>Work to enhance supply chain efficiency, value and foster long-term, successful partnerships with partners and customers.</p>
+            </div>
+          </div>
+
+          <div class="tile delay-2">
+            <div class="badge">U</div>
+            <div class="meta">
+              <h3>Utilizing Technology</h3>
+              <p>Utilizing technology and a robust international distribution network to help businesses scale and reduce cost.</p>
+            </div>
+          </div>
+
+          <div class="tile delay-3">
+            <div class="badge">15 <span style="font-size:12px;display:block;margin-top:4px">yrs</span></div>
+            <div class="meta">
+              <h3>15 Years Experience</h3>
+              <p>Experience across various sectors — quick understanding of complex operations to deliver meaningful solutions.</p>
+            </div>
+          </div>
+
+          <div class="tile delay-4">
+            <div class="badge">1</div>
+            <div class="meta">
+              <h3>1 Stop Services</h3>
+              <p>One-stop supply chain solutions — from sourcing, manufacturing, packaging to distribution.</p>
+            </div>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div>
+</section>
+
+<!-- ===== OUR PARTNERS ===== -->
+
+<section id="partners" class="partners-section" aria-labelledby="partnersHeading">
+  <div class="partners-overlay" aria-hidden="true"></div>
+
+  <div class="container partners-inner">
+    <h2 id="partnersHeading" style="color:var(--accent);text-shadow:0 6px 18px rgba(0,0,0,0.4);margin-bottom:18px">OUR PARTNERS</h2>
+
+    <!-- First row: 3 stat cards -->
+    <div class="partners-row partners-row-1">
+      <div class="stat-card">
+        <div class="stat-number" data-target="36">0</div>
+        <div class="stat-title">Years</div>
+        <div class="stat-desc muted">Malaysian Petro-Chemical manufacturer</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-number" data-target="15">0</div>
+        <div class="stat-title">Major Brands</div>
+        <div class="stat-desc muted">OEM & licensed manufacturing across industries</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-number" data-target="100">0</div>
+        <div class="stat-title">Product Lines</div>
+        <div class="stat-desc muted">100+ manufactured product lines for various applications</div>
+      </div>
+    </div>
+
+    <!-- Second row: Callout -->
+    <div class="partners-row partners-callout-container">
+      <div class="partners-callout">
+        <div style="font-size:20px">“Our FENIC Power UTX series synthetic engine oils received API SP &amp; ILSAC GF-6A”</div>
+        <small>High-performance synthetic engine oil — industry recognitions & certifications</small>
+      </div>
+    </div>
+
+    <!-- Third row: Remaining 4 stat cards -->
+    <div class="partners-row partners-row-2">
+      <div class="stat-card">
+        <div class="stat-number" data-target="9001">0</div>
+        <div class="stat-title">ISO 9001:2015</div>
+        <div class="stat-desc muted">Certified Quality Management</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-number" data-target="1400">0</div>
+        <div class="stat-title">PROD. CAPACITY (L/hr)</div>
+        <div class="stat-desc muted">Automated production lines, 250ml–7L pack sizes & bulk supply</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-number" data-target="23500">0</div>
+        <div class="stat-title">BULK SUPPLY (L)</div>
+        <div class="stat-desc muted">Strategic warehousing & logistics network (23.5k L storage example)</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-number" data-target="1">0</div>
+        <div class="stat-title">R&amp;D</div>
+        <div class="stat-desc muted">Certified & audited in-house laboratory</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<script>
+  // Timeline reveal animation
+  (function(){
+    const tiles = document.querySelectorAll('.tile');
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      });
+    }, {threshold: 0.18});
+    tiles.forEach(t=>obs.observe(t));
+  })();
+
+  // Partner stats count-up
+  (function(){
+    const counters = document.querySelectorAll('.stat-number');
+    const options = {threshold:0.4};
+    const startCount = (el, target) => {
+      const duration = 1400;
+      const start = performance.now();
+      target = Number(target);
+      function step(now) {
+        const progress = Math.min((now - start)/duration, 1);
+        const eased = 1 - Math.pow(1-progress, 3);
+        const value = Math.floor(target * eased);
+        el.textContent = (target >= 1000) ? value.toLocaleString() : value;
+        if(progress < 1) requestAnimationFrame(step);
+        else el.textContent = (target >= 1000) ? target.toLocaleString() : target;
+      }
+      requestAnimationFrame(step);
+    };
+
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          startCount(entry.target, entry.target.dataset.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, options);
+
+    counters.forEach(c=>obs.observe(c));
+  })();
+</script>
+
+
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("active");
+    }
+  </script>
+</body>
+<footer style="background: #0B3E21; color: #FECD0A; padding: 10px 15px; font-family: Montserrat, sans-serif;">
+    <div class="footer-container" style="position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;">
+        
+        <!-- Left: Contact Info -->
+        <div class="footer-section" style="margin-bottom: 8px; text-align: left;">
+            <h4 style="margin: 0 0 4px 0;">Contact Us</h4>
+            <p style="margin: 0; line-height: 1.4;">
+                16A, Jalan PUJ 1/18, Taman Puncak Jalil,<br>
+                43300 Seri Kembangan, Selangor, Malaysia.
+            </p>
+            <p style="margin: 4px 0 0 0;">
+                Email: <a href="mailto:enquiry@dahsampailah.com" style="color: #FECD0A; text-decoration: none;">enquiry@dahsampailah.com</a>
+            </p>
+        </div>
+
+        <!-- Right: Copyright -->
+        <div style="margin-top: 8px; font-size: 0.9rem; padding-top: 0; text-align: right;">
+            &copy; <span id="year"></span> DSL Solutions. All Rights Reserved.
+        </div>
+
+    </div>
+</footer>
+
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</html>
