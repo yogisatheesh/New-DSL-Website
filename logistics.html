@@ -561,9 +561,10 @@ footer {
 <!-- ===== Automotives Section ===== -->
 <!-- ===== Automotives Section ===== -->
 <section id="Automotives" data-aos="fade-up" style="padding:60px 20px; background:#f9f9f9; text-align:center;">
-  <h2 style="color:#0B3E21; margin-bottom:40px;">Automotives</h2>
+  <h2 style="color:#0B3E21; margin-bottom:40px;">Our Products</h2>
   <div class="automotive-container">
-    <div class="automotive-card" data-title="COMPRESSORS"><p>COMPRESSORS</p></div>
+    <div class="automotive-card" data-title="AUTOMOTIVES"><p>AUTOMOTIVES</p></div>
+      <div class="automotive-card" data-title="COMPRESSORS"><p>COMPRESSORS</p></div>
     <div class="automotive-card" data-title="CONVEYORS & OVEN CHAINS"><p>CONVEYORS & OVEN CHAINS</p></div>
     <div class="automotive-card" data-title="DRY ANTI-FRICTION COATING"><p>DRY ANTI-FRICTION COATING</p></div>
     <div class="automotive-card" data-title="FOOD-GRADE"><p>FOOD-GRADE</p></div>
@@ -652,6 +653,7 @@ footer {
 <script>
 // Icon mapping for each card
 const iconMap = {
+     "AUTOMOTIVES": "fa-solid fa-wind",
   "COMPRESSORS": "fa-solid fa-wind",
   "CONVEYORS & OVEN CHAINS": "fa-solid fa-gears",
   "DRY ANTI-FRICTION COATING": "fa-solid fa-brush",
@@ -708,7 +710,12 @@ let currentImages = [];
 
 // All automotive details with image gallery
 const automotiveDetails = {
-  "COMPRESSORS": {
+   "AUTOMOTIVES": {
+    title: "AUTOMOTIVES",
+    description: "Air, Hydrocarbon Gas, Refrigeration & Chiller",
+    images: ["assets/auto1.jpg","assets/auto2.jpg"]
+  },
+    "COMPRESSORS": {
     title: "COMPRESSORS",
     description: "Air, Hydrocarbon Gas, Refrigeration & Chiller",
     images: ["assets/compres1.jpg","assets/compres2.jpg","assets/compres3.jpg","assets/compres4.jpg","assets/compres5.jpg","assets/compres6.jpg"]
@@ -875,3 +882,4 @@ window.addEventListener('click', (e) => {
 </script>
 </body>
 </html>
+
